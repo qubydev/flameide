@@ -93,7 +93,7 @@ export default function App() {
   const [minSizes, setMinSizes] = useState([200, 200]);
   const [editorState, setEditorState] = useState(() => {
     const savedState = localStorage.getItem('editorState');
-    return savedState ? JSON.parse(savedState) : { value: '', language: 'text', stdin: '' };
+    return savedState ? JSON.parse(savedState) : { value: '', language: 'cpp', stdin: '' };
   });
   const [error, setError] = useState('');
   const [stdout, setStdout] = useState('');
