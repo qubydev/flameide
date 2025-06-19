@@ -99,7 +99,7 @@ export default function App() {
     setEditorState(prev => ({
       ...prev,
       language: value,
-      value: prev.value || LANGUAGES[value]?.snippet || ''
+      value: LANGUAGES[value]?.snippet || ''
     }));
   };
 
@@ -132,7 +132,7 @@ export default function App() {
       }
     } catch (err) {
       setStdout('');
-      setError('Network or server error.');
+      setError('Network error.');
     }
 
     setIsRunning(false);
