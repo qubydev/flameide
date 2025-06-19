@@ -81,11 +81,7 @@ public class Main {
     name: 'JavaScript',
     extension: '.js',
     mode: 'javascript',
-    snippet: `let T = parseInt(readline());
-
-for (let i = 0; i < T; i++) {
-
-}`
+    snippet: `console.log("Hello, World!");`
   }
 };
 
@@ -128,7 +124,7 @@ export default function App() {
       const result = await res.json();
 
       if (result.success) {
-        setStdout(result.output);
+        setStdout(result.output || "No output!");
         setError('');
       } else {
         setStdout('');
