@@ -17,7 +17,7 @@ const LANGUAGES = {
     name: 'C++',
     extension: '.cpp',
     mode: 'cpp',
-    snippet: `#include <iostream>
+    snippet: `#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
