@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+.split {
+    display: flex;
+    flex-direction: row;
+}
+
+.gutter {
+    background-color: #333333;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+    cursor: row-resize;
+}
+
+@layer base {
+    body {
+        @apply bg-neutral-900 text-white;
+    }
+
+    button {
+        @apply cursor-pointer;
+    }
+
+    /* Works in WebKit-based browsers (Chrome, Edge, Safari) */
+    *::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: #1e1e1e;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #444;
+        border-radius: 10px;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
+
+    /* Firefox support */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #444 #1e1e1e;
+    }
+
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-pink-500! text-white font-bold py-2 px-4 rounded outline-none border-none;
+    }
+
+    .btn-primary:disabled,
+    .btn-primary[disabled] {
+        @apply bg-pink-300 opacity-60;
+    }
+}
+
+/* // smartphone media query */
+@media (max-width: 598px) {
+    body::after {
+        content: "This app is not optimized for smartphones. Please use a desktop browser.";
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100dvw;
+        height: 100dvh;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        text-align: center;
+        padding: 24px;
+        font-size: 14px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
