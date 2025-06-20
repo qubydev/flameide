@@ -99,7 +99,7 @@ export default function App() {
     setEditorState(prev => ({
       ...prev,
       language: value,
-      value: LANGUAGES[value]?.snippet || ''
+      // value: LANGUAGES[value]?.snippet || ''
     }));
   };
 
