@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "./components/select";
 import { FaPlay } from "react-icons/fa";
+import { IoDocumentText } from "react-icons/io5"
 
 const LANGUAGES = {
   cpp: {
@@ -103,6 +104,17 @@ export default function App() {
     }));
   };
 
+  const handleGettingTemplate = () => {
+    const template = LANGUAGES[editorState.language]?.snippet;
+
+    if (template) {
+      setEditorState(prev => ({
+        ...prev,
+        value: template
+      }));
+    }
+  };
+
   const handleRun = async () => {
     setIsRunning(true);
     setStdout('');
@@ -140,10 +152,8 @@ export default function App() {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      const isMac = navigator.platform.toUpperCase().includes('MAC');
-      const ctrlOrCmd = isMac ? e.metaKey : e.ctrlKey;
 
-      if (ctrlOrCmd && e.key === "'") {
+      if ((e.ctrlKey || e.metaKey) && e.key === "'") {
         e.preventDefault();
         handleRun();
       }
@@ -177,6 +187,7 @@ export default function App() {
           className='size-8'
         />
         <div className='flex items-center gap-4'>
+          <button className='btn-ghost flex items-center gap-2' onClick={handleGettingTemplate}><IoDocumentText className='size-4' /> Get Template</button>
           <Select value={editorState.language} onValueChange={handleLanguageChange}>
             <SelectTrigger className='w-[100px] btn-primary'>
               <SelectValue placeholder="Language" />
